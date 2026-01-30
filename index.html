@@ -17,7 +17,7 @@
       --bg: #0f0f12;
       --text: #f5f5f5;
       --muted: #9ca3af;
-      --silverframe: #98a5b8;
+      --silverframe: #98a5b8; /* Nardo gray - bright metallic gray */
       --panel: #16161b;
       --border: #26262c;
       --accent: #6366f1;
@@ -88,6 +88,7 @@
       color: var(--text);
     }
 
+    /* Target only the word "silverframe" */
     .silverframe-word {
       color: var(--silverframe);
       font-weight: 700;
@@ -100,6 +101,7 @@
       color: var(--muted);
     }
 
+    /* ===== CLEAN ANIMATION ===== */
     .animate .hero-line {
       animation: cleanMotionFade 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
@@ -108,12 +110,14 @@
       animation-delay: 0.2s;
     }
 
+    /* Fade out animation for opening */
     .fade-out {
       opacity: 0;
       transform: translateY(-20px);
       pointer-events: none;
     }
 
+    /* Fade in animation for main website */
     .fade-in {
       animation: fadeInUp 1s ease forwards;
     }
@@ -129,6 +133,7 @@
       }
     }
 
+    /* Simplified smooth animation */
     @keyframes cleanMotionFade {
       to {
         opacity: 1;
@@ -138,6 +143,7 @@
     }
 
     /* ===== MAIN WEBSITE STYLES ===== */
+    /* Header styling */
     header {
       backdrop-filter: blur(20px);
       transition: all 0.5s ease;
@@ -165,6 +171,7 @@
       transform: scale(1.1);
     }
 
+    /* Sidebar */
     .sidebar {
       width: 256px;
       background: var(--panel);
@@ -230,6 +237,7 @@
       margin: 2px 0 0;
     }
 
+    /* Navigation menu */
     nav.nav-menu {
       list-style: none;
       padding: 0;
@@ -277,6 +285,7 @@
       transform: translateX(0);
     }
 
+    /* Main content */
     .main-content {
       transition: margin-left 0.3s ease, width 0.3s ease;
       margin-left: 0;
@@ -293,6 +302,7 @@
       width: calc(100% - 256px);
     }
 
+    /* Hero section */
     .hero-section {
       background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%);
       min-height: 60vh;
@@ -303,10 +313,29 @@
       overflow: hidden;
     }
 
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('bnwHeader.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
     .section-padding {
       padding: 5rem 1.5rem;
     }
 
+    /* Project cards */
     .project-card {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 12px;
@@ -344,6 +373,7 @@
       border-top: 1px solid var(--border);
     }
 
+    /* Contact section with integrated Meet Us */
     .contact-section {
       background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
       position: relative;
@@ -355,11 +385,25 @@
       background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
     }
 
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('bnw.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+    }
+
     .contact-content {
       position: relative;
       z-index: 1;
     }
 
+    /* Contact container for side-by-side layout */
     .contact-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -444,6 +488,7 @@
       color: white !important;
     }
 
+    /* Meet Us section styling (inside Contact section) */
     .address-info {
       margin-bottom: 25px;
       width: 100%;
@@ -546,6 +591,7 @@
       font-weight: 600;
     }
 
+    /* Contact details below the map */
     .map-contact-details {
       width: 100%;
       max-width: 400px;
@@ -611,6 +657,7 @@
       margin-left: 15px;
     }
 
+    /* Footer with Contact Info & Map - Simplified */
     .footer-with-map {
       background-color: var(--panel);
       color: var(--text);
@@ -654,6 +701,7 @@
       color: var(--muted);
     }
 
+    /* Header nav links */
     .header-nav-link {
       transition: color 0.2s ease;
       font-weight: 500;
@@ -702,6 +750,7 @@
       border-color: var(--accent);
     }
 
+    /* Sidebar mode toggle button */
     .sidebar-mode-toggle-btn {
       display: flex;
       align-items: center;
@@ -725,6 +774,7 @@
       border-color: var(--accent);
     }
 
+    /* Gallery modal */
     .gallery-modal {
       position: fixed;
       inset: 0;
@@ -873,6 +923,7 @@
       background: rgba(255, 255, 255, 0.8);
     }
 
+    /* Scrollbar styling */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -951,6 +1002,7 @@
       color: white;
     }
 
+    /* Mobile responsiveness */
     @media (max-width: 768px) {
       .sidebar {
         top: 70px;
@@ -1177,24 +1229,28 @@
               </div>
           
               <nav class="nav-menu"> 
+                <!-- Home button that scrolls to top -->
                 <li class="nav-item">
                   <button onclick="scrollToTop()" class="nav-link">
                     <i class="material-icons" style="font-size:21px">home</i> 
                     <span>Home</span>
                   </button>
                 </li>
+                <!-- About button - scrolls to About section -->
                 <li class="nav-item">
                   <button onclick="scrollToSection('about')" class="nav-link">
                     <i class="material-icons" style="font-size:18px">info</i> 
                     <span>About</span>
                   </button>
                 </li>
+                <!-- Projects button - scrolls to Projects section -->
                 <li class="nav-item">
                   <button onclick="scrollToSection('projects')" class="nav-link">
                     <i class="material-icons" style="font-size:18px">photo_library</i> 
                     <span>Projects</span>
                   </button>
                 </li>
+                <!-- Contact button - scrolls to Contact section -->
                 <li class="nav-item">
                   <button onclick="scrollToSection('contact')" class="nav-link">
                     <i class="material-icons" style="font-size:18px">mail</i> 
@@ -1203,13 +1259,13 @@
                 </li>
               </nav>
               
+              <!-- Theme toggle button in sidebar (same as header) -->
               <button id="sidebarModeToggleBtn" onclick="toggleDarkMode()" class="sidebar-mode-toggle-btn">
                 <i class="fas fa-moon"></i>
                 <span>Toggle Theme</span>
               </button>
             </aside>
-            <!-- LOGO WILL BE ADDED BY JAVASCRIPT -->
-            <img id="mainLogo" alt="Silverframe Logo" class="logo" />
+            <img src="Silver Frame logo.png" alt="Silverframe Logo" class="logo" />
             <button onclick="scrollToTop()" class="text-xl font-bold hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer" style="color: var(--text);">
               Silverframe
             </button>
@@ -1249,7 +1305,7 @@
           <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <div class="project-card cursor-pointer" onclick="openGallery('photography')">
               <div class="block overflow-hidden">
-                <img id="photoProject" alt="Photography Project" />
+                <img src="Bayangmu.jpeg" alt="Photography Project" />
               </div>
               <div class="project-label">
                 Photography
@@ -1258,7 +1314,7 @@
 
             <div class="project-card cursor-pointer" onclick="openGallery('graphic')">
               <div class="block overflow-hidden">
-                <img id="graphicProject" alt="Graphic Design Project" />
+                <img src="logo.png" alt="Graphic Design Project" />
               </div>
               <div class="project-label">
                 Graphic Design
@@ -1267,8 +1323,8 @@
 
             <div class="project-card cursor-pointer" onclick="openGallery('videography')">
               <div class="block overflow-hidden">
-                <video id="videoProject" controls>
-                  <!-- Video source will be added by JavaScript -->
+                <video controls>
+                  <source src="Silverframe logo.mp4" type="video/mp4" />
                 </video>
               </div>
               <div class="project-label">
@@ -1279,18 +1335,21 @@
         </div>
       </section>
 
+      <!-- Contact Us Section with integrated Meet Us -->
       <section id="contact" class="contact-section section-padding">
         <div class="contact-content container-custom">
           <h2>Contact Us</h2>
           <p class="text-xl mb-8" style="color: white;">Interested? Let's get in touch!</p>
           
           <div class="contact-container">
+            <!-- Left Side: Contact Information -->
             <div class="contact-left">
               
               <div class="contact-info">
                 <p style="color: white;">Feel free to reach out through any of the platforms below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
               </div>
               
+              <!-- Additional contact buttons -->
               <div class="mt-8">
                 <a href="mailto:jae296605@gmail.com" class="contact-btn">
                   <i class="fas fa-envelope"></i>
@@ -1309,7 +1368,9 @@
                   <span>WhatsApp</span>
                 </a>
               </div>
+              <!-- Phone number and opening hours below the map -->
               <div class="map-contact-details">
+                <!-- Phone Number -->
                 <div class="contact-detail-item">
                   <div class="contact-detail-icon">
                     <i class="fas fa-phone"></i>
@@ -1319,6 +1380,7 @@
                   </div>
                 </div>
                 
+                <!-- Opening Hours -->
                 <div class="opening-hours">
                   <div class="contact-detail-item">
                     <div class="contact-detail-icon">
@@ -1347,6 +1409,7 @@
               </div>
             </div>
             
+            <!-- Right Side: Meet Us Information -->
             <div class="contact-right">
               <h3 class="contact-section-title">Meet Us</h3>
               
@@ -1355,7 +1418,9 @@
                 <p>67, Jalan 3/42, Seksyen 3, Bandar Baru Bangi</p>
               </div>
               
+              <!-- Mini Map (Clickable) -->
               <div class="mini-map-container" id="contactMiniMapContainer">
+                <!-- Using placeholder map -->
                 <div id="contactMiniMap">
                   <div class="map-marker">
                     <i class="fas fa-map-marker-alt"></i>
@@ -1396,6 +1461,7 @@
     </footer>
   </div>
 
+  <!-- Gallery Modal -->
   <div id="galleryModal" class="gallery-modal">
     <div class="gallery-content">
       <div class="gallery-header-section">
@@ -1421,75 +1487,27 @@
   <div id="fullscreenTip" class="fullscreen-tip">Double-click the image to exit fullscreen</div>
 
   <script>
-    // ===== GOOGLE DRIVE CONFIGURATION =====
-    // REPLACE THESE IDs WITH YOUR ACTUAL GOOGLE DRIVE FILE IDs
-    
-    const GOOGLE_DRIVE_IDS = {
-      // Main images
-      'logo': '1gDltVCA_7XvXmVC1DVAu7x-MchM2pAD5', // Silver Frame logo.png
-      'photography': '1RAonxvBvFJmKusQg3bN4iLVuPVWH1Phs', // Bayangmu.jpeg
-      'graphic': '1UwdGt67f71OoHMNjP-hgn8BzQY6Yr2t-', // logo.png
-      'silverframe_video': '1VlLZnqk3DrDmQrB50iY9pInnjpHWymLe', // Silverframe logo.mp4
-      
-      // Photography gallery
-      'C1': '1FvQhBe8Y8G1yRfHjA1j14fPN7J1S-LV4', // C1.jpg
-      'C2': '1bSORmH_52dKvJ4sCGpv8vDL6kS0Eqc3f', // C2.jpg
-      'C3': '1sbbnD3aJ2I5Y3vKkfZ01UBbJgM1I9o58', // C3.jpg
-      'W1': '1oxkWH_Z3R6sK7BvGqB5H5u1cTH6X-g2g', // W1.jpg
-      'W2': '1wCF1sIjy3ZQAhRjVDKqECIPsF8cQl5-4', // W2.jpg
-      
-      // Graphic design gallery
-      'QFL': '13mxvB6Fjz42ghErMWtX2n1axqgK7ySJl', // QFL.png
-      'SBL': '1w_NJQ2OLb7VwZwlsOm92Dc-FR8lsYfKz', // SBL.png
-      
-      // Videography gallery
-      'parody': '1ZKBlZsjEauF0dTlnn2dDgKD6i5NrwbBk', // Parody misteri dilaila.mp4
-      'trailer': '1NlxO7nWgB07jUMbJqTygivfnQNGJQnRh', // Trailer.mp4
-      'kemerdekaan': '19PJVikSjl88bLJgOusVPSqW25jEVNRrZ', // Video Kemerdekaan.mp4
-      'zack': '1O0gLSUD4OSK5uB7gKj40q0R8mHsgW7nq' // Zack Motohub.mp4
-    };
-
-    // Helper function to get Google Drive URL
-    function getDriveUrl(fileKey) {
-      const fileId = GOOGLE_DRIVE_IDS[fileKey];
-      if (!fileId) {
-        console.warn(`File ID not found for: ${fileKey}`);
-        // Return placeholder
-        if (fileKey.includes('video')) {
-          return 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-        } else {
-          return `https://placehold.co/600x400/6366f1/ffffff?text=Image+${fileKey}`;
-        }
-      }
-      
-      // Different URL format for videos
-      if (fileKey.includes('video') || fileKey.includes('parody') || 
-          fileKey.includes('trailer') || fileKey.includes('kemerdekaan') || 
-          fileKey.includes('zack') || fileKey.includes('silverframe_video')) {
-        return `https://drive.google.com/uc?export=download&id=${fileId}`;
-      } else {
-        return `https://drive.google.com/uc?export=view&id=${fileId}`;
-      }
-    }
-
     // ===== OPENING ANIMATION SCRIPT =====
     document.fonts.ready.then(() => {
       const title = document.getElementById("motionTitle");
       const openingAnimation = document.getElementById("openingAnimation");
       
+      // Force hardware acceleration for smooth animation
       title.style.transform = 'translateZ(0)';
       
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
+            // Use requestAnimationFrame for smoother animation start
             requestAnimationFrame(() => {
               title.classList.add("animate");
               
+              // After opening animation completes, transition to main website
               setTimeout(() => {
                 transitionToMainWebsite();
-              }, 2000);
+              }, 2000); // 2 seconds after opening animation
             });
-            observer.disconnect();
+            observer.disconnect(); // play once
           }
         },
         { 
@@ -1498,17 +1516,21 @@
         }
       );
 
+      // Small delay to ensure everything is ready
       setTimeout(() => {
         observer.observe(title);
       }, 100);
     });
 
+    // Function to transition from opening animation to main website
     function transitionToMainWebsite() {
       const openingAnimation = document.getElementById("openingAnimation");
       const mainWebsite = document.getElementById("mainWebsite");
       
+      // Fade out opening animation
       openingAnimation.classList.add("fade-out");
       
+      // After fade out, show and fade in main website
       setTimeout(() => {
         openingAnimation.style.display = "none";
         mainWebsite.style.display = "block";
@@ -1516,39 +1538,20 @@
         requestAnimationFrame(() => {
           mainWebsite.classList.add("fade-in");
           
+          // Initialize theme after main website appears
           initializeTheme();
-          loadAllMedia();
-          
+          // Initialize sidebar state
           const savedSidebarState = localStorage.getItem('sidebarExpanded');
           if (savedSidebarState === 'true') {
             document.getElementById('sidebar').classList.add('expanded');
             document.querySelector('.main-content').classList.add('expanded');
           }
         });
-      }, 800);
-    }
-
-    // Load all media from Google Drive
-    function loadAllMedia() {
-      // Load logo
-      const logo = document.getElementById('mainLogo');
-      logo.src = getDriveUrl('logo');
-      logo.alt = 'Silverframe Logo';
-      
-      // Load project images
-      document.getElementById('photoProject').src = getDriveUrl('photography');
-      document.getElementById('graphicProject').src = getDriveUrl('graphic');
-      
-      // Load video project
-      const videoProject = document.getElementById('videoProject');
-      const source = document.createElement('source');
-      source.src = getDriveUrl('silverframe_video');
-      source.type = 'video/mp4';
-      videoProject.appendChild(source);
-      videoProject.load();
+      }, 800); // Match this with CSS transition duration
     }
 
     // ===== MAIN WEBSITE FUNCTIONALITY =====
+    // Theme toggle and initialization
     function initializeTheme() {
       const savedTheme = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1559,6 +1562,7 @@
         document.documentElement.classList.remove('light-mode');
       }
       
+      // Update both theme buttons
       updateThemeButtons();
     }
 
@@ -1590,11 +1594,13 @@
       }
     }
 
+    // Scroll to specific section function
     function scrollToSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         
+        // Close sidebar on mobile after clicking
         if (window.innerWidth <= 768) {
           const sidebar = document.getElementById('sidebar');
           const mainContent = document.querySelector('.main-content');
@@ -1604,9 +1610,11 @@
       }
     }
 
+    // Scroll to top function
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       
+      // Close sidebar on mobile after clicking
       if (window.innerWidth <= 768) {
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.querySelector('.main-content');
@@ -1615,7 +1623,7 @@
       }
     }
 
-    // ===== GALLERY CONFIGURATION =====
+    // Gallery state
     const state = {
       currentIndex: 0,
       galleries: {
@@ -1623,37 +1631,38 @@
           title: 'Photography Portfolio',
           description: 'Capturing moments with artistic precision',
           items: [
-            { type: 'image', src: getDriveUrl('photography'), alt: 'Photo 1' },
-            { type: 'image', src: getDriveUrl('C1'), alt: 'Photo 2' },
-            { type: 'image', src: getDriveUrl('C2'), alt: 'Photo 3' },
-            { type: 'image', src: getDriveUrl('C3'), alt: 'Photo 4' },
-            { type: 'image', src: getDriveUrl('W1'), alt: 'Photo 5' },
-            { type: 'image', src: getDriveUrl('W2'), alt: 'Photo 6' },
+            { type: 'image', src: 'Bayangmu.jpeg', alt: 'Photo 1' },
+            { type: 'image', src: 'C1.jpg', alt: 'Photo 2' },
+            { type: 'image', src: 'C2.jpg', alt: 'Photo 3' },
+            { type: 'image', src: 'C3.jpg', alt: 'Photo 4' },
+            { type: 'image', src: 'W1.jpg', alt: 'Photo 5' },
+            { type: 'image', src: 'W2.jpg', alt: 'Photo 6' },
           ]
         },
         graphic: {
           title: 'Graphic Design Works',
           description: 'Creative designs that make an impact',
           items: [
-            { type: 'image', src: getDriveUrl('graphic'), alt: 'Design 1' },
-            { type: 'image', src: getDriveUrl('QFL'), alt: 'Design 2' },
-            { type: 'image', src: getDriveUrl('SBL'), alt: 'Design 3' },
+            { type: 'image', src: 'logo.png', alt: 'Design 1' },
+            { type: 'image', src: 'QFL.png', alt: 'Design 3' },
+            { type: 'image', src: 'SBL.png', alt: 'Design 4' },
           ]
         },
         videography: {
           title: 'Videography Projects',
           description: 'Stories told through motion',
           items: [
-            { type: 'video', src: getDriveUrl('silverframe_video'), alt: 'Video 1' },
-            { type: 'video', src: getDriveUrl('parody'), alt: 'Video 2' },
-            { type: 'video', src: getDriveUrl('trailer'), alt: 'Video 3' },
-            { type: 'video', src: getDriveUrl('kemerdekaan'), alt: 'Video 4' },
-            { type: 'video', src: getDriveUrl('zack'), alt: 'Video 5' },
+            { type: 'video', src: 'Silverframe logo.mp4', alt: 'Video 1' },
+            { type: 'video', src: 'Parody misteri dilaila.mp4', alt: 'Video 2' },
+            { type: 'video', src: 'Trailer.mp4', alt: 'Video 3' },
+            { type: 'video', src: 'Video Kemerdekaan.mp4', alt: 'Video 4' },
+            { type: 'video', src: 'Zack Motohub.mp4', alt: 'Video 5' },
           ]
         }
       }
     };
 
+    // Sidebar toggle functionality
     document.getElementById('toggleSidebar').addEventListener('click', function() {
       const sidebar = document.getElementById('sidebar');
       const mainContent = document.querySelector('.main-content');
@@ -1661,6 +1670,7 @@
       sidebar.classList.toggle('expanded');
       mainContent.classList.toggle('expanded');
       
+      // Save sidebar state
       localStorage.setItem('sidebarExpanded', sidebar.classList.contains('expanded'));
     });
 
@@ -1693,17 +1703,9 @@
         if (index === 0) div.classList.add('active');
         
         if (item.type === 'image') {
-          const img = document.createElement('img');
-          img.src = item.src;
-          img.alt = item.alt;
-          div.appendChild(img);
+          div.innerHTML = `<img src="${item.src}" alt="${item.alt}" />`;
         } else if (item.type === 'video') {
-          const video = document.createElement('video');
-          const source = document.createElement('source');
-          source.src = item.src;
-          source.type = 'video/mp4';
-          video.appendChild(source);
-          div.appendChild(video);
+          div.innerHTML = `<video><source src="${item.src}" type="video/mp4" /></video>`;
         }
         
         div.onclick = () => {
@@ -1727,7 +1729,6 @@
         mainImage.alt = item.alt;
         mainImage.style.display = 'block';
         mainVideo.style.display = 'none';
-        mainVideo.pause();
       } else if (item.type === 'video') {
         mainVideo.querySelector('source').src = item.src;
         mainVideo.load();
@@ -1769,11 +1770,13 @@
       mainVideo.pause();
     }
 
+    // Contact Map Functionality
     document.getElementById('contactMiniMapContainer').addEventListener('click', function() {
       const address = "67+Jalan+3/42+Seksyen+3+Bandar+Baru+Bangi";
       window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
     });
 
+    // Double-click to exit fullscreen
     document.getElementById('mainImage').addEventListener('dblclick', function() {
       if (document.fullscreenElement) {
         document.exitFullscreen();
@@ -1788,18 +1791,21 @@
       }
     });
 
+    // Close popup by clicking outside
     document.getElementById('galleryModal').addEventListener('click', function(e) {
       if (e.target === this) {
         closeGallery();
       }
     });
 
+    // Close popup with Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeGallery();
       }
     });
 
+    // Smooth scroll for header navigation links
     document.querySelectorAll('.header-nav-link').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1808,6 +1814,7 @@
       });
     });
 
+    // Update active state for sidebar buttons on scroll
     window.addEventListener('scroll', function() {
       const sections = ['about', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
@@ -1822,6 +1829,7 @@
             document.querySelectorAll('.nav-link').forEach(link => {
               link.classList.remove('active');
             });
+            // We could add active class logic here if needed
           }
         }
       });
